@@ -543,13 +543,13 @@ class ProjectorMessageViewSet(ModelViewSet):
         """
         if self.action in ("list", "retrieve"):
             result = self.get_access_permissions().check_permissions(self.request.user)
-        elif self.action in ("create", "destroy"):
+        elif self.action in ("create"):
             result = has_perm(
                 self.request.user, "core.can_manage_projector"
             ) or in_some_groups(
                 self.request.user, [config["agenda_point_of_order_groups"]]
             )
-        elif self.action in ("partial_update", "update"):
+        elif self.action in ("partial_update", "update", "destroy"):
             result = has_perm(self.request.user, "core.can_manage_projector")
         else:
             result = False
