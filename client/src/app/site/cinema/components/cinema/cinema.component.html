@@ -24,7 +24,7 @@
     <os-list-of-speakers-content
         [customTitle]="true"
         [speakers]="listOfSpeakers"
-        *osPerms="permission.agendaCanSeeListOfSpeakers; and: listOfSpeakers"
+        *osPerms="permission.agendaCanSeeListOfSpeakers; and: listOfSpeakers; and: !isGlobalLosEnabled"
     >
         <p class="line-and-icon subtitle-text">
             <a [routerLink]="closUrl" [class.disabled]="!closUrl">
@@ -52,6 +52,10 @@
             </button>
         </p>
     </os-list-of-speakers-content>
+
+    <os-global-list-of-speakers
+        *ngIf="isGlobalLosEnabled"
+    ></os-global-list-of-speakers>
 
     <os-poll-collection [currentProjection]="projectedViewModel"></os-poll-collection>
 
