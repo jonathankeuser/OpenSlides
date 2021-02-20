@@ -16,6 +16,7 @@ import { BaseProjectableViewModel } from 'app/site/base/base-projectable-view-mo
 import { BaseViewComponentDirective } from 'app/site/base/base-view';
 import { ViewProjector } from 'app/site/projector/models/view-projector';
 import { CurrentListOfSpeakersService } from 'app/site/projector/services/current-list-of-speakers.service';
+import { ConfigService } from 'app/core/ui-services/config.service';
 
 @Component({
     selector: 'os-cinema',
@@ -82,10 +83,15 @@ export class CinemaComponent extends BaseViewComponentDirective implements OnIni
         }
     }
 
+    public get isGlobalLosEnabled(): boolean {
+        return this.config.instant('agenda_enable_global_list_of_speakers');
+    }
+
     public constructor(
         title: Title,
         translate: TranslateService,
         snackBar: MatSnackBar,
+        private config: ConfigService,
         private operator: OperatorService,
         private projectorService: ProjectorService,
         private projectorRepo: ProjectorRepositoryService,

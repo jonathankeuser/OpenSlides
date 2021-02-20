@@ -1,0 +1,12 @@
+<os-list-of-speakers-content
+    #content
+    [customTitle]="true"
+    [speakers]="viewListOfSpeakers"
+    [sortMode]="manualSortMode"
+    (isListOfSpeakersEmptyEvent)="isListOfSpeakersEmpty = $event"
+    (canReaddLastSpeakerEvent)="canReaddLastSpeaker = $event"
+>
+    <p class="subtitle-text">
+        {{ 'List of speakers' | translate }}
+    </p>
+</os-list-of-speakers-content>
