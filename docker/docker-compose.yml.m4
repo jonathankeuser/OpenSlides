@@ -70,6 +70,7 @@ x-osserver-env: &default-osserver-env
     EMAIL_USE_TLS: "ifenvelse(`EMAIL_USE_TLS',)"
     EMAIL_TIMEOUT: "ifenvelse(`EMAIL_TIMEOUT',)"
     ENABLE_ELECTRONIC_VOTING: "ifenvelse(`ENABLE_ELECTRONIC_VOTING', False)"
+    ENABLE_CHAT: "ifenvelse(`ENABLE_CHAT', False)"
     ENABLE_SAML: "ifenvelse(`ENABLE_SAML', False)"
     INSTANCE_DOMAIN: "ifenvelse(`INSTANCE_DOMAIN', http://example.com:8000)"
     JITSI_DOMAIN: "ifenvelse(`JITSI_DOMAIN',)"
@@ -157,10 +158,11 @@ services:
     depends_on:
       - redis
       - server
+    secrets:
+      - django
     environment:
       REDIS_WRITE_HOST: redis
       MESSAGE_BUS_HOST: redis-slave
-      WORKER_HOST: server
     networks:
       - back
 
