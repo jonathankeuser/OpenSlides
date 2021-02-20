@@ -159,6 +159,26 @@ def get_config_variables():
     )
 
     yield ConfigVariable(
+        name="agenda_enable_global_list_of_speakers",
+        default_value=False,
+        input_type="boolean",
+        label="Enable global list of speakers",
+        weight=227,
+        group="Agenda",
+        subgroup="List of speakers",
+    )
+
+    yield ConfigVariable(
+        name="agenda_global_list_of_speakers",
+        default_value=1,
+        input_type="integer",
+        label="ID of globally used list of speakers",
+        weight=227,
+        group="Agenda",
+        subgroup="List of speakers",
+    )
+
+    yield ConfigVariable(
         name="agenda_couple_countdown_and_speakers",
         default_value=True,
         input_type="boolean",
