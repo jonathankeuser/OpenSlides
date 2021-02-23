@@ -1,0 +1,17 @@
+<div id="container" #container>
+    <div class="waiting-list"> <!-- *ngIf="waitingSpeakers?.length">-->
+        <p class="subtitle-text">
+            {{ 'List of speakers' | translate }}
+        </p>
+        <div
+            class="line"
+            *ngFor="let item of waitingSpeakers; let i = index"
+        >
+            <div class="section-two">
+                <!-- {number}. {item.getTitle()} -->
+                <span>{{ i + 1 }}.&nbsp;</span>
+                <span>{{ item?.getTitle() }}</span>
+            </div>
+        </div>
+    </div>
+</div>

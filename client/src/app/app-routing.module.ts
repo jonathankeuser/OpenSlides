@@ -31,6 +31,12 @@ const routes: Route[] = [
             import('./fullscreen-projector/fullscreen-projector.module').then(m => m.FullscreenProjectorModule),
         data: { noInterruption: true }
     },
+    {
+        path: 'glos-raw',
+        loadChildren: () =>
+            import('./global-list-of-speakers-raw/global-list-of-speakers-raw.module').then(m => m.GlobalListOfSpeakersRawModule),
+        data: { noInterruption: true }
+    },
     { path: '', loadChildren: () => import('./site/site.module').then(m => m.SiteModule) },
     { path: '**', redirectTo: '' }
 ];
