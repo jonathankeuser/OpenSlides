@@ -3721,3 +3721,24 @@ msgstr "zurückgezogen"
 
 msgid "yellow"
 msgstr "gelb"
+
+msgid "I make a point of order"
+msgstr "Ich stelle einen Geschäftsordnungsantrag auf"
+
+msgid "Enable global list of speakers"
+msgstr "Globale Redeliste aktivieren"
+
+msgid "ID of globally used list of speakers"
+msgstr "ID der global zu nutzenden Redeliste"
+
+msgid "Default groups with rights to request point of order"
+msgstr "Standardgruppen mit dem Recht Geschäftsordnungsanträge zu stellen"
+
+msgid "Project point of order as message to projector"
+msgstr "Geschäftsordnungsantrag als Nachricht auf Projektoren projizieren"
+
+msgid "Projectors to project point of orders to in the format of a JSON-Array"
+msgstr "Projektoren auf die Geschäftsordnungsanträge projiziert werden sollen im Format eines JSON-Arrays"
+
+msgid "Point of order requests in the format of a JSON-Array"
+msgstr "Geschäftsordungsanträge im Format eines JSON-Arrays"
