@@ -24,7 +24,7 @@
     <os-list-of-speakers-content
         [customTitle]="true"
         [speakers]="listOfSpeakers"
-        *osPerms="permission.agendaCanSeeListOfSpeakers; and: listOfSpeakers; and: !isGlobalLosEnabled"
+        *osPerms="'permission.agendaCanSeeListOfSpeakers'; and: listOfSpeakers; and: !isGlobalLosEnabled"
     >
         <p class="line-and-icon subtitle-text">
             <a [routerLink]="closUrl" [class.disabled]="!closUrl">
