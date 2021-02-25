@@ -203,7 +203,7 @@ def get_config_variables():
         name="agenda_point_of_order_groups",
         default_value=[],
         input_type="groups",
-        label="Default groups with rights to request points of order",
+        label="Default groups with rights to request point of order",
         weight=229,
         group="Agenda",
         subgroup="List of speakers",
