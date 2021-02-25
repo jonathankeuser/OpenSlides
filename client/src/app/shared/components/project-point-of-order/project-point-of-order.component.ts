@@ -57,34 +57,39 @@ export class ProjectPointOfOrderComponent extends BaseViewComponentDirective imp
         const message: any = new ProjectorMessage({
             message: `<p style="font-size: 45px;">GO-Antrag</p>\n<p style="font-size: 35px;">auf ${this.PointOfOrders[this.selectPointOfOrder]}<br>von ${this.operator.user.first_name} ${this.operator.user.last_name} gestellt`
         });
-        const repoElement: any = await this.projectorMessageRepositoryService.create(message);
-        let requestElement = {"stable": false, "name": "core/projector-message", "id":repoElement.id};
 
-        for(let ele in this.ProjectorsToProjectTo) {
-            try {
-                let requestData: any = {};
-                requestData.elements = [];
+        try {
+            const repoElement: any = await this.projectorMessageRepositoryService.create(message);
+            let requestElement = {"stable": false, "name": "core/projector-message", "id":repoElement.id};
 
-                let projector: Projector = new Projector({id: this.ProjectorsToProjectTo[ele]}); 
-                let projectorData = await this.projectorDataService.getAvailableProjectorData(projector);
+            for(let ele in this.ProjectorsToProjectTo) {
+                try {
+                    let requestData: any = {};
+                    requestData.elements = [];
 
-                if (projectorData) {
-                    projectorData.forEach(entry => {
-                        if (!entry.data.error) {
-                            requestData.elements.push(entry.element);
-                        }
-                    });
-                }
+                    let projector: Projector = new Projector({id: this.ProjectorsToProjectTo[ele]}); 
+                    let projectorData = await this.projectorDataService.getAvailableProjectorData(projector);
+
+                    if (projectorData) {
+                        projectorData.forEach(entry => {
+                            if (!entry.data.error) {
+                                requestData.elements.push(entry.element);
+                            }
+                        });
+                    }
                              
-                requestData.elements.push(requestElement);
+                    requestData.elements.push(requestElement);
 
-                await this.http.post(`/rest/core/projector/${this.ProjectorsToProjectTo[ele]}/project/`, requestData);
-            } catch (e) {
-                this.raiseError(e);
+                    await this.http.post(`/rest/core/projector/${this.ProjectorsToProjectTo[ele]}/project/`, requestData);
+                } catch (e) {
+                    this.raiseError(e);
+                }
             }
-        }
 
-        this.PointOfOrderSent = true;
+            this.PointOfOrderSent = true;
+        } catch (e) {
+            this.raiseError(e);
+        }
 
         setTimeout(() => {
             this.PointOfOrderSent = false;
