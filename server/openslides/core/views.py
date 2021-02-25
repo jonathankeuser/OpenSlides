@@ -143,7 +143,7 @@ class ProjectorViewSet(ModelViewSet):
             result = has_perm(self.request.user, "core.can_see_projector") and (
                 has_perm(self.request.user, "core.can_manage_projector")
                 or in_some_groups(
-                    self.request.user, [config["agenda_point_of_order_groups"]]
+                    self.request.user.pk or 0, config["agenda_point_of_order_groups"]
                 )
             )
         else:
@@ -547,7 +547,7 @@ class ProjectorMessageViewSet(ModelViewSet):
             result = has_perm(
                 self.request.user, "core.can_manage_projector"
             ) or in_some_groups(
-                self.request.user, [config["agenda_point_of_order_groups"]]
+                self.request.user.pk or 0, config["agenda_point_of_order_groups"]
             )
         elif self.action in ("partial_update", "update", "destroy"):
             result = has_perm(self.request.user, "core.can_manage_projector")
